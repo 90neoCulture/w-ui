@@ -1,16 +1,30 @@
-import {createRouter, createWebHistory} from 'vue-router';
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
+const Entry = () => import('../views/Entry/index.vue');
+const Button = () => import('../examples/Button');
 
-const routes = [
+export const routes: RouteRecordRaw[] = [
   {
-    path: '/test',
-    component: () => import('../views/Test/index.vue')
-  }
-]
+    path: '/',
+    redirect: '/entry'
+  },
+  {
+    path: '/entry',
+    name: 'entry',
+    component: Entry,
+    children: [
+      {
+        path: '/button',
+        name: 'button',
+        component: Button,
+      },
+    ]
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
-})
+  routes,
+});
 
 export default router;
