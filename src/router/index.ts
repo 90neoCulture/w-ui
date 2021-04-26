@@ -1,12 +1,13 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
 const Entry = () => import('../views/Entry/index.vue');
-const Button = () => import('../examples/Button');
+const Button = () => import('../examples/Button/index.vue');
+const Cell = () => import('../examples/Cell/index.vue');
 
 export const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    redirect: '/entry'
+    redirect: '/button',
   },
   {
     path: '/entry',
@@ -18,11 +19,16 @@ export const routes: RouteRecordRaw[] = [
         name: 'button',
         component: Button,
       },
-    ]
+      {
+        path: '/cell',
+        name: 'cell',
+        component: Cell,
+      },
+    ],
   },
 ];
 
-const router = createRouter({
+export const router = createRouter({
   history: createWebHistory(),
   routes,
 });
