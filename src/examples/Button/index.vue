@@ -2,33 +2,49 @@
   <div>
     button...
     <div>{{count}}</div>
+    <div>{{double}}</div>
     <button @click="increment">加1</button>
     <button @click="incrementTwo">加2</button>
   </div>
 </template>
 
 <script>
-import store from '../../store';
+import { useStore, mapState, mapMutations, mapGetters } from 'vuex';
+import { computed } from 'vue';
 export default {
   setup() {
-    // const initialNum = 2;
-    // const incrementTwo = (num = initialNum) => {
-    //   store.commit('increment', num);
-    // };
-    // return incrementTwo;
+    const store = useStore();
+    const countStep = 1;
+    const countStepTwo = 2;
+    return {
+      count: computed(() => store.state.count),
+      double: computed(() => store.getters.double),
+      increment: () => store.commit('increment', {
+        amount: countStep
+      }),
+      incrementTwo: () =>
+        store.commit('increment', {
+          amount: countStepTwo,
+        }),
+    };
   },
-  methods: {
-    increment() {
-      store.commit('increment', {
-        amount: 1
-      });
-    },
-    incrementTwo (num = 2) {
-      store.commit('increment', {
-        amount: num
-      });
-    }
-  },
+  // computed: {
+  //   ...mapState(['count']),
+  //   ...mapGetters(['double']),
+  // },
+  // methods: {
+  //   ...mapMutations(['increment']),
+  //   increment() {
+  //     this.$store.commit('increment', {
+  //       amount: 1
+  //     });
+  //   },
+  //   incrementTwo() {
+  //     this.$store.commit('increment', {
+  //       amount: 2,
+  //     });
+  //   },
+  // },
 };
 </script>
 
