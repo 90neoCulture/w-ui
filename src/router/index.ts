@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import comps from './comp';
 
 const Entry = () => import('../views/Entry/index.vue');
-const Button = () => import('../examples/Button/index.vue');
-const Cell = () => import('../examples/Cell/index.vue');
+const Demos = () => import('../demos/count_vuex.vue');
 
 export const routes: RouteRecordRaw[] = [
   {
@@ -10,21 +10,15 @@ export const routes: RouteRecordRaw[] = [
     redirect: '/button',
   },
   {
+    path: '/demos',
+    name: 'demos',
+    component: Demos,
+  },
+  {
     path: '/entry',
     name: 'entry',
     component: Entry,
-    children: [
-      {
-        path: '/button',
-        name: 'button',
-        component: Button,
-      },
-      {
-        path: '/cell',
-        name: 'cell',
-        component: Cell,
-      },
-    ],
+    children: comps,
   },
 ];
 
