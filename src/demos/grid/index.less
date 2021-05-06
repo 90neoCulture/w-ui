@@ -1,0 +1,44 @@
+.container{
+  .inner{
+    background-color: #ddd;
+    display: grid;
+    /* 行/列的宽 */
+    /* grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px; */
+    /* grid-template-columns: repeat(3,100px);
+    grid-template-rows: repeat(3,100px); */
+    /*   grid-template-columns: 1fr 1fr 2fr;
+      grid-template-rows: 1fr 1fr 2fr; */
+    /*  grid-template-columns: 300px 1fr 2fr;
+      grid-template-rows: 200px 2fr 5fr; */
+    grid-template-columns: [c1] 300px [c2] auto [c3] 200px;
+    grid-template-rows: [r1] 200px [r2] 2fr [r3] 5fr;
+    /* 网格间距 */
+    /* row-gap: 20px;
+    column-gap: 20px; */
+    gap: 10px 10px;
+    /* 默认：摆放位置先行后列 */
+    // grid-auto-flow: row;
+    /* 摆放位置先列后行 */
+    // grid-auto-flow: column;
+
+    /* justify-items属性设置单元格内容的水平位置（左中右），
+    align-items属性设置单元格内容的垂直位置（上中下）。 */
+    /* justify-items: start | center | end;
+    align-items: start | center | end; */
+    // justify-items: start;
+    // align-items: start;
+
+    /* justify-content属性是整个内容区域在容器里面的水平位置（左中右），
+    align-content属性是整个内容区域的垂直位置（上中下）。 */
+    /* 
+      justify-content: start | end | center | stretch | space-around | space-between | space-evenly;
+      align-content: start | end | center | stretch | space-around | space-between | space-evenly;  
+    */
+    justify-content: space-between;
+    align-content: space-between;
+    p{
+      background-color: pink;
+    }
+  }
+}
